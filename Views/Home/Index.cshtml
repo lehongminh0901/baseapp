@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div class="row">
+        @for (var i = 0; i < @Model.Count; i++)
+        {
+
+            <div class="col-3">
+                <a asp-action="Details" asp-route-id="@Model[i].Isbn">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="/Image/@Model[i].ImgUrl" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="@Model[i].Title">@Model[i].Title</h5>
+                            @* <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>*@
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <p class="@Model[i].Category">Category : @Model[i].Category</p>
+                            <p class="@Model[i].Author">Author : @Model[i].Author</p>
+                            <p class="@Model[i].Price">Price : @Model[i].Price</p>
+                        </ul>
+
+                    </div>
+                </a>
+            </div>
+
+        }
+    </div>
+</div>

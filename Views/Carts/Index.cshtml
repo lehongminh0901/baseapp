@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Testdemo.Models.Cart>
+  @*  @model Testdemo.Models.Cart*@
+
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Image
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Total
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img class="card-img-top" src="Image/@item.Book.ImgUrl" alt="Card image cap">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.Title)
+                </td>
+                <td>
+                    <form asp-route-id="@item.BookIsbn" asp-action="UpLoad">
+                        @* <input type = "text"  class="@item.Quantity" name= "@item.Quantity" value = "@item.Quantity"/> asp-route-id="@item.BookIsbn*@
+                        <input name="q" class="form-control" value="@item.Quantity" />
+                    </form>
+
+
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-controller="Carts" asp-action="Checkout">Checkout</a>
+
+</div>
